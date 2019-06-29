@@ -8,15 +8,24 @@ def read(fname):
 
 
 setup(
-    name='<your-pypi-package-name>',
+    name='calfire-wildfires',
     version='0.0.1',
-    description="<your-repo-description>",
+    description="Download wildfires data from CalFire",
     long_description=read('README.rst'),
     author='Los Angeles Times Data Desk',
     author_email='datadesk@latimes.com',
-    url='http://www.github.com/datadesk/<your-repo-slug>',
+    url='http://www.github.com/datadesk/calfire-wildfires',
     license="MIT",
-    packages=("<your-python-module-name>",),
+    packages=("calfire_wildfires",),
+    install_requires=[
+        "geojson",
+        "click",
+        "requests"
+    ],
+    entry_points="""
+        [console_scripts]
+        calfirewildfires=calfire_wildfires.cli:cmd
+    """,
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Programming Language :: Python',
@@ -26,7 +35,7 @@ setup(
     ],
     project_urls={
         'Maintainer': 'https://github.com/datadesk',
-        'Source': 'https://github.com/datadesk/<your-repo-slug>',
-        'Tracker': 'https://github.com/datadesk/<your-repo-slug>/issues'
+        'Source': 'https://github.com/datadesk/calfire-wildfires',
+        'Tracker': 'https://github.com/datadesk/calfire-wildfires/issues'
     },
 )

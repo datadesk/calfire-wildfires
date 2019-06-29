@@ -1,0 +1,3 @@
+[run]
+include =
+    calfire_wildfires/__init__.py

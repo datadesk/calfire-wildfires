@@ -11,3 +11,7 @@ ship:
 	rm -rf dist/
 	python setup.py sdist bdist_wheel
 	twine upload dist/* --skip-existing
+
+
+fires:
+	python -c "import calfire_wildfires; noaa_wildfires.get_fires()"
