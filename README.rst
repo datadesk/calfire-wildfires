@@ -1,5 +1,5 @@
-python-open-source-template
-===========================
+calfire-wildfires
+=================
 
 Download wildfires data from CalFire
 
@@ -8,7 +8,7 @@ Installation
 
 ::
 
-    $ pipenv install noaa_wildfires
+    $ pipenv install calfire-wildfires
 
 
 Command-line usage
