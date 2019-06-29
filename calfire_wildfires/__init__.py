@@ -43,3 +43,13 @@ def get_active_fires():
     """
     fires = get_fires()['features']
     return FeatureCollection([f for f in fires if f['properties']['is_active'] == 'Y'])
+
+
+def get_inactive_fires():
+    """
+    Get inactive fires from CalFire.
+
+    Returns GeoJSON.
+    """
+    fires = get_fires()['features']
+    return FeatureCollection([f for f in fires if f['properties']['is_active'] != 'Y'])
