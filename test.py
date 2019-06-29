@@ -12,6 +12,9 @@ class MyUnitTest(unittest.TestCase):
     def test_active_fires(self):
         calfire_wildfires.get_active_fires()
 
+    def test_inactive_fires(self):
+        calfire_wildfires.get_inactive_fires()
+
 
 if __name__ == '__main__':
     unittest.main()

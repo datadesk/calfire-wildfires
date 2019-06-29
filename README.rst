@@ -26,18 +26,21 @@ Command-line usage
       --help  Show this message and exit.
 
     Commands:
-      active-fires  The latest active fires
-      fires         Get the latest fires, both active and contained
-
+      active-fires    The latest active fires
+      fires           The latest fires, both active and contained
+      inactive-fires  The latest inactive fires
 
 Download the latest fires, both active and contained ::
 
     $ calfirewildfires fires
 
-
 Download the latest active fires ::
 
     $ calfirewildfires active-fires
+
+Download the latest inactive fires ::
+
+    $ calfirewildfires inactive-fires
 
 
 Python usage
@@ -54,6 +57,10 @@ Download the latest fires, both active and contained ::
 Download the latest active fires ::
 
     >>> data = calfire_wildfires.get_active_fires()
+
+Download the latest inactive fires ::
+
+    >>> data = calfire_wildfires.get_inactive_fires()
 
 
 Contributing
