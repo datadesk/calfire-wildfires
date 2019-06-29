@@ -1,7 +1,60 @@
 python-open-source-template
 ===========================
 
-A template for open-source Python software repositories
+Download wildfires data from CalFire
+
+Installation
+------------
+
+::
+
+    $ pipenv install noaa_wildfires
+
+
+Command-line usage
+------------------
+
+::
+
+    Usage: calfirewildfires [OPTIONS] COMMAND [ARGS]...
+
+      A command-line interface for downloading wildfires data from CalFire.
+
+      Returns GeoJSON.
+
+    Options:
+      --help  Show this message and exit.
+
+    Commands:
+      active-fires  The latest active fires
+      fires         Get the latest fires, both active and contained
+
+
+Download the latest fires, both active and contained ::
+
+    $ calfirewildfires fires
+
+
+Download the latest active fires ::
+
+    $ calfirewildfires active-fires
+
+
+Python usage
+------------
+
+Import the library. ::
+
+    >>> import calfire_wildfires
+
+Download the latest fires, both active and contained ::
+
+    >>> data = calfire_wildfires.get_fires()
+
+Download the latest active fires ::
+
+    >>> data = calfire_wildfires.get_active_fires()
+
 
 Contributing
 ------------
@@ -17,3 +70,11 @@ Run tests ::
 Ship new version to PyPI ::
 
     $ make ship
+
+
+Developing the CLI
+------------------
+
+The command-line interface is implemented using Click and setuptools. To install it locally for development inside your virtual environment, run the following installation command, as `prescribed by the Click documentation <https://click.palletsprojects.com/en/7.x/setuptools/#setuptools-integration>`_. ::
+
+    $ pip install --editable .
