@@ -7,6 +7,7 @@ verify_ssl = true
 twine = "*"
 flake8 = "*"
 coverage = "*"
+black = "*"
 
 [packages]
 click = "*"
@@ -15,3 +16,6 @@ requests = "*"
 
 [requires]
 python_version = "3.6"
+
+[pipenv]
+allow_prereleases = true
