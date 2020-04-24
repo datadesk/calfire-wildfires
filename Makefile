@@ -14,4 +14,4 @@ ship:
 
 
 fires:
-	python -c "import calfire_wildfires; noaa_wildfires.get_fires()"
+	python -c "import calfire_wildfires; calfire_wildfires.get_fires()"
