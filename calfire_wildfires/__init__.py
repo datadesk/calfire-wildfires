@@ -15,7 +15,9 @@ def get_fires():
     Returns GeoJSON.
     """
     # Read CSV
-    r = requests.get("http://www.fire.ca.gov/imapdata/mapdataactive.csv")
+    r = requests.get("https://www.fire.ca.gov/imapdata/mapdataall.csv")
+    if r.status_code != 200:
+        raise Exception(f"Request for data failed with {r.status_code} status code")
     lines = r.content.decode('utf-8').splitlines()
     reader = csv.DictReader(lines, delimiter=',')
 
