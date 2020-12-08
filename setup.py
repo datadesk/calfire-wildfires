@@ -9,7 +9,7 @@ def read(fname):
 
 setup(
     name='calfire-wildfires',
-    version='0.0.3',
+    version='0.0.4',
     description="Download wildfires data from CalFire",
     long_description=read('README.rst'),
     author='Los Angeles Times Data Desk',
