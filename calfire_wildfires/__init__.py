@@ -55,3 +55,25 @@ def get_inactive_fires():
     """
     fires = get_fires()['features']
     return FeatureCollection([f for f in fires if f['properties']['is_active'] != 'Y'])
+
+def get_active_fires_json():
+    """
+    Get the latest fires, both active and contained, from CalFire.
+
+    Returns GeoJSON.
+    """
+    # Read CSV
+    r = requests.get("https://www.fire.ca.gov/umbraco/api/IncidentApi/List?inactive=false")
+    if r.status_code != 200:
+        raise Exception(f"Request for data failed with {r.status_code} status code")
+
+    data = r.json()
+
+    # Convert it to GeoJSON
+    features = [Feature(
+        geometry=Point(map(float, [f['Longitude'], f['Latitude']])),
+        properties=f
+    ) for f in data]
+
+    # Return it
+    return FeatureCollection(features)

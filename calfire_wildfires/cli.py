@@ -1,5 +1,5 @@
 import click
-from calfire_wildfires import get_fires, get_active_fires, get_inactive_fires
+from calfire_wildfires import get_fires, get_active_fires, get_inactive_fires, get_active_fires_json
 
 
 @click.group()
@@ -25,6 +25,10 @@ def active_fires():
 @cmd.command(help="The latest inactive fires")
 def inactive_fires():
     click.echo(get_inactive_fires())
+
+@cmd.command(help="The latest active fires JSON")
+def fires_json():
+    click.echo(get_active_fires_json())
 
 
 if __name__ == '__main__':
