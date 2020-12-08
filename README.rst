@@ -29,6 +29,7 @@ Command-line usage
       active-fires    The latest active fires
       fires           The latest fires, both active and contained
       inactive-fires  The latest inactive fires
+      fires-JSON      The latest active fires JSON
 
 Download the latest fires, both active and contained ::
 
@@ -41,6 +42,10 @@ Download the latest active fires ::
 Download the latest inactive fires ::
 
     $ calfirewildfires inactive-fires
+
+Download the latest active fires json ::
+
+    $ calfirewildfires fires-json
 
 
 Python usage

@@ -15,3 +15,6 @@ ship:
 
 fires:
 	python -c "import calfire_wildfires; calfire_wildfires.get_fires()"
+
+fires_json:
+	python -c "import calfire_wildfires; calfire_wildfires.get_active_fires_json()"

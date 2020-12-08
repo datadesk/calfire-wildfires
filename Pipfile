@@ -13,6 +13,7 @@ black = "*"
 click = "*"
 geojson = "*"
 requests = "*"
+calfire-wildfires = "*"
 
 [requires]
 python_version = "3.6"
