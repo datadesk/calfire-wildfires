@@ -26,6 +26,7 @@ def active_fires():
 def inactive_fires():
     click.echo(get_inactive_fires())
 
+
 @cmd.command(help="The latest active fires JSON")
 def fires_json():
     click.echo(get_active_fires_json())
