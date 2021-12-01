@@ -7,16 +7,12 @@ verify_ssl = true
 twine = "*"
 flake8 = "*"
 coverage = "*"
-black = "*"
 
 [packages]
 click = "*"
 geojson = "*"
 requests = "*"
-calfire-wildfires = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.8"
 
-[pipenv]
-allow_prereleases = true

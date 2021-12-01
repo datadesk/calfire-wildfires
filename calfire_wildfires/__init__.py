@@ -1,5 +1,3 @@
-#! /usr/bin/env python
-# -*- coding: utf-8 -*-
 """
 Download wildfires data from CalFire
 """
@@ -55,6 +53,7 @@ def get_inactive_fires():
     """
     fires = get_fires()['features']
     return FeatureCollection([f for f in fires if f['properties']['is_active'] != 'Y'])
+
 
 def get_active_fires_json():
     """
