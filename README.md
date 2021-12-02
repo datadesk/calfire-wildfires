@@ -1,74 +1,68 @@
-calfire-wildfires
-=================
+# calfire-wildfires
 
 Download wildfires data from CalFire
+## Installation
 
-Installation
-------------
+```sh
+pipenv install calfire-wildfires
+```
+## Command-line usage
 
-    $ pipenv install calfire-wildfires
+```sh
+Usage: calfirewildfires [OPTIONS] COMMAND [ARGS]...
 
-Command-line usage
-------------------
+    A command-line interface for downloading wildfires data from CalFire.
+    Returns GeoJSON.
 
-    Usage: calfirewildfires [OPTIONS] COMMAND [ARGS]...
+Options:
+    --help  Show this message and exit.
 
-      A command-line interface for downloading wildfires data from CalFire.
+Commands:
+    active-fires    The latest active fires
+    all-fires       Fires year-to-date, both active and contained
+```
 
-      Returns GeoJSON.
+From the shell: 
 
-    Options:
-      --help  Show this message and exit.
+```sh
+calfirewildfires all-fires
+calfirewildfires active-fires
+```
+## Python usage
 
-    Commands:
-      active-fires    The latest active fires
-      all-fires       Fires year-to-date, both active and contained
+Import the library. 
 
-Download fires year-to-date, both active and contained :
+```python
+>>> import calfire_wildfires
+>>> data = calfire_wildfires.get_all_fires()
+>>> data = calfire_wildfires.get_active_fires()
+```
 
-    $ calfirewildfires all-fires
+## Contributing
 
-Download the latest active fires :
+Install dependencies for development.
 
-    $ calfirewildfires active-fires
+```sh
+pipenv install --dev
+```
+Run tests.
 
-Python usage
-------------
-
-Import the library. :
-
-    >>> import calfire_wildfires
-
-Download the fires year-to-date, both active and contained :
-
-    >>> data = calfire_wildfires.get_all_fires()
-
-Download the latest active fires :
-
-    >>> data = calfire_wildfires.get_active_fires()
-
-Contributing
-------------
-
-Install dependencies for development :
-
-    $ pipenv install --dev
-
-Run tests :
-
-    $ make test
+```sh
+make test
+```
 
 Ship new version to PyPI :
 
-    $ make ship
-
-Developing the CLI
-------------------
+```sh
+make ship
+```
+## Developing the CLI
 
 The command-line interface is implemented using Click and setuptools. To
 install it locally for development inside your virtual environment, run
 the following installation command, as [prescribed by the Click
 documentation](https://click.palletsprojects.com/en/7.x/setuptools/#setuptools-integration).
-:
 
-    $ pip install --editable .
+```sh
+pip install --editable .
+```
