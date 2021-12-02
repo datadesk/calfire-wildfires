@@ -12,7 +12,7 @@ setup(
     version='0.0.4',
     description="Download wildfires data from CalFire",
     long_description=read('README.md'),
-    author='Los Angeles Times Data Desk',
+    author='Los Angeles Times Data and Graphics Department',
     author_email='datagraphics@caltimes.com',
     url='http://www.github.com/palewire/calfire-wildfires',
     license="MIT",
