@@ -11,14 +11,14 @@ setup(
     name='calfire-wildfires',
     version='0.0.4',
     description="Download wildfires data from CalFire",
-    long_description=read('README.rst'),
+    long_description=read('README.md'),
+    long_description_content_type='text/markdown',
     author='Los Angeles Times Data Desk',
     author_email='datadesk@latimes.com',
     url='http://www.github.com/datadesk/calfire-wildfires',
     license="MIT",
     packages=("calfire_wildfires",),
     install_requires=[
-        "geojson",
         "click",
         "requests"
     ],
@@ -31,11 +31,13 @@ setup(
         'Programming Language :: Python',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
         'License :: OSI Approved :: MIT License',
     ],
     project_urls={
-        'Maintainer': 'https://github.com/datadesk',
-        'Source': 'https://github.com/datadesk/calfire-wildfires',
-        'Tracker': 'https://github.com/datadesk/calfire-wildfires/issues'
+        'Maintainer': 'https://github.com/palewire',
+        'Source': 'https://github.com/palewire/calfire-wildfires',
+        'Tracker': 'https://github.com/palewire/calfire-wildfires/issues'
     },
 )
