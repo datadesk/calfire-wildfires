@@ -10,15 +10,12 @@ def get_active_fires():
 
     Returns GeoJSON with point geometry
     """
-    # reqeust
+    # Request data
     r = requests.get("https://www.fire.ca.gov/umbraco/api/IncidentApi/GeoJsonList?inactive=false")
     if r.status_code != 200:
         raise Exception(f"Request for data failed with {r.status_code} status code")
-
-    data = r.json()
-
     # Return it
-    return data
+    return r.json()
 
 
 def get_all_fires():
@@ -27,12 +24,9 @@ def get_all_fires():
 
     Returns GeoJSON with point geometry
     """
-    # reqeust
+    # Request data
     r = requests.get("https://www.fire.ca.gov/umbraco/api/IncidentApi/GeoJsonList")
     if r.status_code != 200:
         raise Exception(f"Request for data failed with {r.status_code} status code")
-
-    data = r.json()
-
     # Return it
-    return data
+    return  r.json()
