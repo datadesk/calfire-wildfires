@@ -1,4 +1,4 @@
-.PHONY: lint test ship
+.PHONY: lint test ship scrape
 
 lint:
 	pipenv run flake8 ./
