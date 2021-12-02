@@ -15,7 +15,7 @@ setup(
     long_description_content_type='text/markdown',
     author='Los Angeles Times Data Desk',
     author_email='datadesk@latimes.com',
-    url='http://www.github.com/datadesk/calfire-wildfires',
+    url='http://www.github.com/palewire/calfire-wildfires',
     license="MIT",
     packages=("calfire_wildfires",),
     install_requires=[
