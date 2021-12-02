@@ -7,7 +7,6 @@ test:
 	pipenv run coverage run test.py
 	pipenv run coverage report -m
 
-
 scrape:
 	pipenv run calfirewildfires all-fires > data/all.json
 	pipenv run calfirewildfires active-fires > data/active.json
