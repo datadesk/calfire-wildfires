@@ -8,7 +8,7 @@ def get_active_fires():
     """
     Get the latest ative fires from CalFire.
 
-    Returns GeoJSON with point geometry 
+    Returns GeoJSON with point geometry
     """
     # reqeust
     r = requests.get("https://www.fire.ca.gov/umbraco/api/IncidentApi/GeoJsonList?inactive=false")
@@ -20,11 +20,12 @@ def get_active_fires():
     # Return it
     return data
 
+
 def get_all_fires():
     """
     Get all active and inactive fires (YTD) from CalFire.
 
-    Returns GeoJSON with point geometry 
+    Returns GeoJSON with point geometry
     """
     # reqeust
     r = requests.get("https://www.fire.ca.gov/umbraco/api/IncidentApi/GeoJsonList")
