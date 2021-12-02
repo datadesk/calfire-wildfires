@@ -1,4 +1,4 @@
-.PHONY: lint test ship
+.PHONY: lint test ship scrape
 
 lint:
 	pipenv run flake8 ./
@@ -6,7 +6,6 @@ lint:
 test:
 	pipenv run coverage run test.py
 	pipenv run coverage report -m
-
 
 scrape:
 	pipenv run calfirewildfires all-fires > data/all.json

@@ -31,11 +31,13 @@ setup(
         'Programming Language :: Python',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
         'License :: OSI Approved :: MIT License',
     ],
     project_urls={
-        'Maintainer': 'https://github.com/datadesk',
-        'Source': 'https://github.com/datadesk/calfire-wildfires',
-        'Tracker': 'https://github.com/datadesk/calfire-wildfires/issues'
+        'Maintainer': 'https://github.com/palewire',
+        'Source': 'https://github.com/palewire/calfire-wildfires',
+        'Tracker': 'https://github.com/palewire/calfire-wildfires/issues'
     },
 )
