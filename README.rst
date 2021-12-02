@@ -27,26 +27,15 @@ Command-line usage
 
     Commands:
       active-fires    The latest active fires
-      fires           The latest fires, both active and contained
-      inactive-fires  The latest inactive fires
-      fires-JSON      The latest active fires JSON
+      all-fires       Fires year-to-date, both active and contained
 
-Download the latest fires, both active and contained ::
+Download fires year-to-date, both active and contained ::
 
-    $ calfirewildfires fires
+    $ calfirewildfires all-fires
 
 Download the latest active fires ::
 
     $ calfirewildfires active-fires
-
-Download the latest inactive fires ::
-
-    $ calfirewildfires inactive-fires
-
-Download the latest active fires json ::
-
-    $ calfirewildfires fires-json
-
 
 Python usage
 ------------
@@ -55,17 +44,13 @@ Import the library. ::
 
     >>> import calfire_wildfires
 
-Download the latest fires, both active and contained ::
+Download the fires year-to-date, both active and contained ::
 
-    >>> data = calfire_wildfires.get_fires()
+    >>> data = calfire_wildfires.get_all_fires()
 
 Download the latest active fires ::
 
     >>> data = calfire_wildfires.get_active_fires()
-
-Download the latest inactive fires ::
-
-    >>> data = calfire_wildfires.get_inactive_fires()
 
 
 Contributing

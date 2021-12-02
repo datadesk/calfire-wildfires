@@ -6,14 +6,11 @@ import calfire_wildfires
 
 class MyUnitTest(unittest.TestCase):
 
-    def test_fires(self):
-        calfire_wildfires.get_fires()
+    def test_all_fires(self):
+        calfire_wildfires.get_all_fires()
 
     def test_active_fires(self):
         calfire_wildfires.get_active_fires()
-
-    def test_inactive_fires(self):
-        calfire_wildfires.get_inactive_fires()
 
 
 if __name__ == '__main__':

@@ -18,7 +18,6 @@ setup(
     license="MIT",
     packages=("calfire_wildfires",),
     install_requires=[
-        "geojson",
         "click",
         "requests"
     ],
