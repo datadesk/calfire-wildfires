@@ -12,6 +12,7 @@ setup(
     version='0.0.4',
     description="Download wildfires data from CalFire",
     long_description=read('README.md'),
+    long_description_content_type='text/markdown',
     author='Los Angeles Times Data Desk',
     author_email='datadesk@latimes.com',
     url='http://www.github.com/datadesk/calfire-wildfires',
