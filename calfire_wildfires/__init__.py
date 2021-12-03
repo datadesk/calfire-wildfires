@@ -29,4 +29,4 @@ def get_all_fires():
     if r.status_code != 200:
         raise Exception(f"Request for data failed with {r.status_code} status code")
     # Return it
-    return  r.json()
+    return r.json()
