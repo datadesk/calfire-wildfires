@@ -5,8 +5,7 @@ import requests
 
 
 def get_active_fires():
-    """
-    Get the latest ative fires from CalFire.
+    """Get the latest ative fires from CalFire.
 
     Returns GeoJSON with point geometry
     """
@@ -19,8 +18,7 @@ def get_active_fires():
 
 
 def get_all_fires():
-    """
-    Get all active and inactive fires (YTD) from CalFire.
+    """Get all active and inactive fires year to date from CalFire.
 
     Returns GeoJSON with point geometry
     """
