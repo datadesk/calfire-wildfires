@@ -4,8 +4,7 @@ from calfire_wildfires import get_active_fires, get_all_fires
 
 @click.group()
 def cmd():
-    """
-    A command-line interface for downloading wildfires data from CalFire.
+    """A command-line interface for downloading wildfires data from CalFire.
 
     Returns GeoJSON.
     """
