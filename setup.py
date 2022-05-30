@@ -45,7 +45,7 @@ setup(
     long_description_content_type='text/markdown',
     author='Ben Welsh',
     author_email='b@palewi.re',
-    url='http://www.github.com/datadesk/calfire-wildfires',
+    url='https://palewi.re/docs/calfire-wildfires/',
     license="MIT",
     packages=("calfire_wildfires",),
     install_requires=[
