@@ -6,7 +6,8 @@ verify_ssl = true
 [dev-packages]
 twine = "*"
 flake8 = "*"
-coverage = "*"
+sphinx = "*"
+setuptools-scm = "*"
 
 [packages]
 click = "*"
@@ -14,4 +15,3 @@ requests = "*"
 
 [requires]
 python_version = "3.9"
-
