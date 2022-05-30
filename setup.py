@@ -1,4 +1,5 @@
 import os
+
 from setuptools import setup
 
 
@@ -39,36 +40,33 @@ def local_version(version):
 
 
 setup(
-    name='calfire-wildfires',
+    name="calfire-wildfires",
     description="Download wildfires data from CalFire",
-    long_description=read('README.md'),
-    long_description_content_type='text/markdown',
-    author='Ben Welsh',
-    author_email='b@palewi.re',
-    url='https://palewi.re/docs/calfire-wildfires/',
+    long_description=read("README.md"),
+    long_description_content_type="text/markdown",
+    author="Ben Welsh",
+    author_email="b@palewi.re",
+    url="https://palewi.re/docs/calfire-wildfires/",
     license="MIT",
     packages=("calfire_wildfires",),
-    install_requires=[
-        "click",
-        "requests"
-    ],
+    install_requires=["click", "requests"],
     entry_points="""
         [console_scripts]
         calfirewildfires=calfire_wildfires.cli:cmd
     """,
     use_scm_version={"version_scheme": version_scheme, "local_scheme": local_version},
     classifiers=[
-        'Development Status :: 5 - Production/Stable',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9',
-        'Programming Language :: Python :: 3.10',
-        'License :: OSI Approved :: MIT License',
+        "Development Status :: 5 - Production/Stable",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "License :: OSI Approved :: MIT License",
     ],
     project_urls={
-        'Maintainer': 'https://github.com/datadesk',
-        'Source': 'https://github.com/datadesk/calfire-wildfires',
-        'Tracker': 'https://github.com/datadesk/calfire-wildfires/issues'
+        "Maintainer": "https://github.com/datadesk",
+        "Source": "https://github.com/datadesk/calfire-wildfires",
+        "Tracker": "https://github.com/datadesk/calfire-wildfires/issues",
     },
 )

@@ -8,6 +8,7 @@ twine = "*"
 flake8 = "*"
 sphinx = "*"
 setuptools-scm = "*"
+pre-commit = "*"
 
 [packages]
 click = "*"

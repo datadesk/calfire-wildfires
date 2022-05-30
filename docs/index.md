@@ -32,7 +32,7 @@ Commands:
     all-fires       Fires year-to-date, both active and contained
 ```
 
-From the shell: 
+From the shell:
 
 ```sh
 calfirewildfires all-fires
@@ -41,10 +41,11 @@ calfirewildfires active-fires
 
 ## Python usage
 
-Import the library. 
+Import the library.
 
 ```python
 import calfire_wildfires
+
 data = calfire_wildfires.get_all_fires()
 data = calfire_wildfires.get_active_fires()
 ```
