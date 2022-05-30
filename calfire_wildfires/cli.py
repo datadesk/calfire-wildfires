@@ -1,4 +1,5 @@
 import click
+
 from calfire_wildfires import get_active_fires, get_all_fires
 
 
@@ -21,5 +22,5 @@ def all_fires():
     click.echo(get_all_fires())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     cmd()
