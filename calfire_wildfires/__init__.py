@@ -12,8 +12,8 @@ def get_active_fires():
 
     print("Requesting active Fires")
     # Request data
-    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36',
-               'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36', # noqa
+               'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7', # noqa
                'Accept-Language': 'en-US,en;q=0.9'
                }
     r = requests.get(
@@ -37,5 +37,3 @@ def get_all_fires():
         raise Exception(f"Request for data failed with {r.status_code} status code")
     # Return it
     return r.json()
-
-# noqa: E15,E16
