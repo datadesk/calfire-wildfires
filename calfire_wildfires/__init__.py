@@ -22,7 +22,6 @@ def get_active_fires():
     )
     if r.status_code != 200:
         raise Exception(f"Request for data failed with {r.status_code} status code")
-    
     # Return it
     return r.json()
 
@@ -38,3 +37,5 @@ def get_all_fires():
         raise Exception(f"Request for data failed with {r.status_code} status code")
     # Return it
     return r.json()
+
+# noqa: E15,E16
