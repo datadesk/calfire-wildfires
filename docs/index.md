@@ -1,6 +1,3 @@
-```{include} _templates/nav.html
-```
-
 # calfire-wildfires
 
 Download wildfires data from CalFire
@@ -72,7 +69,7 @@ The command-line interface is implemented using Click and setuptools. To install
 pipenv run pip install --editable .
 ```
 
-## Links
+## Other resources
 
 * Docs: [palewi.re/docs/calfire-wildfires/](https://palewi.re/docs/calfire-wildfires/)
 * Issues: [github.com/datadesk/calfire-wildfires/issues](https://github.com/datadesk/calfire-wildfires/issues)
