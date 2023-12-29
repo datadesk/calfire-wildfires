@@ -30,8 +30,6 @@ jobs:
           pipenv run python setup.py install
           pipenv run calfirewildfires all-fires > data/all.json
           pipenv run calfirewildfires active-fires > data/active.json
-        env:
-          AIRNOW_KEYS: ${{ secrets.AIRNOW_KEYS }}
         shell: bash
 
       - name: Datestamp
