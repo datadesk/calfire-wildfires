@@ -11,9 +11,7 @@ def get_active_fires():
     """
     # Request data
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",  # noqa
-        "Accept": "application/json",
-        "Accept-Language": "en-US, en;q=0.9"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36",  # noqa
     }
     url = "https://www.fire.ca.gov/umbraco/api/IncidentApi/GeoJsonList?inactive=false"
     r = requests.get(url)
@@ -35,9 +33,7 @@ def get_all_fires():
     """
     # Request data
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",  # noqa
-        "Accept": "application/json",
-        "Accept-Language": "en-US, en;q=0.9"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36",  # noqa
     }
     url = "https://www.fire.ca.gov/umbraco/api/IncidentApi/GeoJsonList"
     r = requests.get(url)
