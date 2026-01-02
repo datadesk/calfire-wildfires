@@ -13,7 +13,7 @@ def get_active_fires():
     headers = {
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",  # noqa
     }
-    url = "hhttps://incidents.fire.ca.gov/umbraco/api/IncidentApi/GeoJsonList?inactive=false"
+    url = "https://incidents.fire.ca.gov/umbraco/api/IncidentApi/GeoJsonList?inactive=false"
     r = requests.get(url, headers=headers)
 
     # Make sure get a good response
