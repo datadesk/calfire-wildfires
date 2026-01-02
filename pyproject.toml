@@ -27,7 +27,7 @@ dependencies = ["requests", "click"]
 dynamic = ["version"]
 
 [project.scripts]
-calfirewildfires=calfire_wildfires.cli:cmd
+calfirewildfires="calfire_wildfires.cli:cmd"
 
 [project.urls]
 Source = "https://github.com/datadesk/calfire-wildfires"
