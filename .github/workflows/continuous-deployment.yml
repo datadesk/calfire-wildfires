@@ -52,6 +52,10 @@ jobs:
           enable-cache: true
           cache-dependency-glob: '**/pyproject.toml'
 
+      - id: install-python
+        name: Install Python
+        run: uv python install ${{ matrix.python }}
+
       - name: Install Python dependencies
         run: uv sync
 
