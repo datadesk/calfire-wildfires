@@ -6,33 +6,21 @@ on:
 
 jobs:
   lint-python:
-    name: Lint
+    name: Lint Python code
     runs-on: ubuntu-latest
     steps:
-      - id: checkout
-        name: Checkout
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - id: setup-python
-        name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Check with Ruff
+        uses: astral-sh/ruff-action@v3
         with:
-          python-version: '3.11'
-          cache: 'pipenv'
+          args: 'check --exit-zero --verbose'
 
-      - id: install-pipenv
-        name: Install pipenv
-        run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
-        shell: bash
-
-      - id: install-python-dependencies
-        name: Install Python dependencies
-        run: pipenv sync --dev
-        shell: bash
-
-      - id: run
-        name: Run
-        run: pipenv run flake8 calfire_wildfires
+      - name: Format with Ruff
+        uses: astral-sh/ruff-action@v3
+        with:
+          args: 'format --check --verbose'
 
   test-python:
     strategy:
@@ -51,6 +39,10 @@ jobs:
           version: "latest"
           enable-cache: true
           cache-dependency-glob: '**/pyproject.toml'
+
+      - id: install-python
+        name: Install Python
+        run: uv python install ${{ matrix.python }}
 
       - name: Install Python dependencies
         run: uv sync
