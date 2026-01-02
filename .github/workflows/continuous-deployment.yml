@@ -90,31 +90,16 @@ jobs:
           enable-cache: true
           cache-dependency-glob: '**/pyproject.toml'
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-          cache: 'pipenv'
+      - id: install-python
+        name: Install Python
+        run: uv python install 3.10
 
-      - id: install-pipenv
-        name: Install pipenv
-        run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
-        shell: bash
-
-      - id: pipenv-install
-        name: Install Python dependencies
-        run: pipenv sync --dev
+      - name: Install Python dependencies
+        run: uv sync
 
       - id: build
         name: Build release
-        run: |
-            pipenv run python setup.py sdist
-            pipenv run python setup.py bdist_wheel
-            ls -l dist
-
-      - id: check
-        name: Check release
-        run: |
-            pipenv run twine check dist/*
+        run: uv build --sdist --wheel
 
       - id: save
         name: Save artifact
