@@ -52,24 +52,12 @@ jobs:
           enable-cache: true
           cache-dependency-glob: '**/pyproject.toml'
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: ${{ matrix.python }}
-          cache: 'pipenv'
-
-      - id: install-pipenv
-        name: Install pipenv
-        run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
-        shell: bash
-
-      - id: pipenv-install
-        name: Install Python dependencies
-        run: pipenv install --skip-lock --python `which python`
-        shell: bash
+      - name: Install Python dependencies
+        run: uv sync
 
       - id: run
-        name: Run
-        run: pipenv run python test.py
+        name: Run tests
+        run: uv run python test.py
         env:
           AIRNOW_KEYS: ${{ secrets.AIRNOW_KEYS }}
         shell: bash
