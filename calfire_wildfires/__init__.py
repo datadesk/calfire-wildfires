@@ -1,6 +1,7 @@
 """
 Download wildfires data from CalFire
 """
+
 import requests
 
 
@@ -20,7 +21,9 @@ def get_active_fires():
     try:
         assert r.ok
     except AssertionError as err:
-        raise Exception(f"Request for data failed with {r.status_code} status code") from err
+        raise Exception(
+            f"Request for data failed with {r.status_code} status code"
+        ) from err
 
     # Return it
     return r.json()
@@ -42,7 +45,9 @@ def get_all_fires():
     try:
         assert r.ok
     except AssertionError as err:
-        raise Exception(f"Request for data failed with {r.status_code} status code") from err
+        raise Exception(
+            f"Request for data failed with {r.status_code} status code"
+        ) from err
 
     # Return it
     return r.json()
