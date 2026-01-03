@@ -9,7 +9,7 @@ readme = "README.md"
 authors = [
     {name = "Ben Welsh", email = "b@palewi.re"},
 ]
-license = "MIT"
+license = {text = "MIT"}
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Operating System :: OS Independent",
@@ -34,7 +34,7 @@ Source = "https://github.com/datadesk/calfire-wildfires"
 Tracker = "https://github.com/datadesk/calfire-wildfires/issues"
 
 [tool.setuptools]
-packages = ["calfire-wildfires"]
+packages = ["calfire_wildfires"]
 
 [tool.setuptools_scm]
 
