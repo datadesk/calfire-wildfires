@@ -31,7 +31,6 @@ jobs:
         
       - name: Run scrape command
         run: |
-          uv run python setup.py install
           uv run calfirewildfires all-fires > data/all.json
           uv run calfirewildfires active-fires > data/active.json
         shell: bash
