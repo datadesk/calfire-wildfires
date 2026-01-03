@@ -31,9 +31,9 @@ jobs:
         
       - name: Run scrape command
         run: |
-          pipenv run python setup.py install
-          pipenv run calfirewildfires all-fires > data/all.json
-          pipenv run calfirewildfires active-fires > data/active.json
+          uv run python setup.py install
+          uv run calfirewildfires all-fires > data/all.json
+          uv run calfirewildfires active-fires > data/active.json
         shell: bash
 
       - name: Datestamp
