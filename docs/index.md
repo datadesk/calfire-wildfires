@@ -163,6 +163,8 @@ Run the offline tests, the linter and the type checker.
 make check
 ```
 
+`make test` also measures test coverage, including branches, and fails if it drops below 95%. `make test-fast` runs the tests without coverage.
+
 The tests that call CAL FIRE's real website are skipped by default. Run them with `make test-live`.
 
 ## Developing the CLI

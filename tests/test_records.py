@@ -7,7 +7,7 @@ from datetime import UTC, datetime
 import pytest
 
 import calfire_wildfires
-from calfire_wildfires import Incident, records
+from calfire_wildfires import CalFireDataError, Incident, records
 
 
 def test_records_doctests():
@@ -104,3 +104,80 @@ def test_get_active_incidents(fake_calfire, sample):
 def test_old_functions_still_return_json(fake_calfire, sample):
     """The original functions are unchanged."""
     assert calfire_wildfires.get_all_fires() == sample("all.json")
+
+
+@pytest.mark.parametrize("blank", [None, "", "   "])
+def test_blank_text_fields_are_none(sample, blank):
+    """Empty, missing or blank-spaced text becomes None, not an empty string."""
+    feature = sample("all.json")["features"][0]
+    feature["properties"]["AdminUnit"] = blank
+    feature["properties"]["ControlStatement"] = blank
+    incident = Incident.from_feature(feature)
+    assert incident.admin_unit is None
+    assert incident.control_statement is None
+
+
+def test_blank_number_is_none(sample):
+    """A number sent as empty text counts as not reported."""
+    feature = sample("all.json")["features"][0]
+    feature["properties"]["AcresBurned"] = ""
+    feature["properties"]["PercentContained"] = None
+    incident = Incident.from_feature(feature)
+    assert incident.acres_burned is None
+    assert incident.percent_contained is None
+
+
+def test_number_sent_as_text_is_parsed(sample):
+    """Numbers that arrive as text are turned into floats."""
+    feature = sample("all.json")["features"][0]
+    feature["properties"]["AcresBurned"] = "12.5"
+    assert Incident.from_feature(feature).acres_burned == 12.5
+
+
+def test_time_without_zone_is_taken_as_utc(sample):
+    """A time with no zone is read as UTC rather than left naive."""
+    feature = sample("all.json")["features"][0]
+    feature["properties"]["Started"] = "2026-01-24T22:17:06"
+    assert Incident.from_feature(feature).started_at == datetime(
+        2026, 1, 24, 22, 17, 6, tzinfo=UTC
+    )
+
+
+def test_time_with_other_zone_is_converted_to_utc(sample):
+    """A time with an offset is converted to UTC."""
+    feature = sample("all.json")["features"][0]
+    feature["properties"]["Started"] = "2026-01-24T14:17:06-08:00"
+    assert Incident.from_feature(feature).started_at == datetime(
+        2026, 1, 24, 22, 17, 6, tzinfo=UTC
+    )
+
+
+def test_flag_must_be_true_or_false(sample):
+    """A flag sent as text is refused instead of guessed."""
+    feature = sample("all.json")["features"][0]
+    feature["properties"]["IsActive"] = "yes"
+    with pytest.raises(CalFireDataError, match="true or false"):
+        Incident.from_feature(feature)
+
+
+def test_optional_fields_may_be_absent(sample):
+    """Fields CAL FIRE sometimes leaves out get safe defaults."""
+    feature = sample("all.json")["features"][0]
+    for key in (
+        "AdminUnitUrl",
+        "ControlStatement",
+        "AgencyNames",
+        "NotificationDesired",
+    ):
+        del feature["properties"][key]
+    incident = Incident.from_feature(feature)
+    assert incident.agency_names == ""
+    assert incident.notification_desired is False
+    assert incident.control_statement is None
+
+
+def test_county_blank_gives_no_counties(sample):
+    """An empty county gives an empty tuple."""
+    feature = sample("all.json")["features"][0]
+    feature["properties"]["County"] = ""
+    assert Incident.from_feature(feature).counties == ()

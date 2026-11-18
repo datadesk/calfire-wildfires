@@ -47,6 +47,7 @@ dev = [
 ]
 test = [
     "pytest",
+    "pytest-cov",
 ]
 docs = [
     "myst-parser",
@@ -82,3 +83,17 @@ python-version = "3.11"
 
 [tool.ty.src]
 include = ["calfire_wildfires"]
+
+[tool.coverage.run]
+source = ["calfire_wildfires"]
+branch = true
+
+[tool.coverage.report]
+fail_under = 95
+show_missing = true
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "^\\s*\\.\\.\\.$",
+    "if __name__ == .__main__.:",
+]
