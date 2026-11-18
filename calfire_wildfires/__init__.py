@@ -3,13 +3,15 @@
 from __future__ import annotations
 
 from .errors import CalFireDataError, CalFireError
-from .fetch import BASE_URL, DEFAULT_TIMEOUT, download_json
+from .fetch import BASE_URL, DEFAULT_TIMEOUT, Fetcher, Reply, download_json
 from .records import Incident
 
 __all__ = [
     "CalFireDataError",
     "CalFireError",
+    "Fetcher",
     "Incident",
+    "Reply",
     "get_active_fires",
     "get_active_incidents",
     "get_all_fires",
@@ -19,12 +21,21 @@ __all__ = [
 ACTIVE_URL = f"{BASE_URL}?inactive=false"
 
 
-def get_active_fires(verbose: bool = False, timeout: float = DEFAULT_TIMEOUT) -> dict:
+def get_active_fires(
+    verbose: bool = False,
+    timeout: float = DEFAULT_TIMEOUT,
+    *,
+    get: Fetcher | None = None,
+) -> dict:
     """Get the latest active fires from CAL FIRE.
 
     Args:
         verbose: Print each request to standard error. Defaults to False.
         timeout: Seconds to wait for CAL FIRE on each try. Defaults to 60.
+        get: A function that makes the web request, such as ``requests.get``.
+            Pass your own to add retries, logging or custom headers. It is
+            called as ``get(url, timeout=seconds)``. Defaults to
+            ``requests.get`` with the headers this package has always sent.
 
     Returns:
         GeoJSON with point geometry, as a dictionary. It has no features when
@@ -39,16 +50,26 @@ def get_active_fires(verbose: bool = False, timeout: float = DEFAULT_TIMEOUT) ->
         >>> import calfire_wildfires
         >>> data = calfire_wildfires.get_active_fires()
         >>> data = calfire_wildfires.get_active_fires(timeout=10)
+        >>> data = calfire_wildfires.get_active_fires(get=my_get)
     """
-    return download_json(ACTIVE_URL, verbose=verbose, timeout=timeout)
+    return download_json(ACTIVE_URL, verbose=verbose, timeout=timeout, get=get)
 
 
-def get_all_fires(verbose: bool = False, timeout: float = DEFAULT_TIMEOUT) -> dict:
+def get_all_fires(
+    verbose: bool = False,
+    timeout: float = DEFAULT_TIMEOUT,
+    *,
+    get: Fetcher | None = None,
+) -> dict:
     """Get all active and inactive fires year to date from CAL FIRE.
 
     Args:
         verbose: Print each request to standard error. Defaults to False.
         timeout: Seconds to wait for CAL FIRE on each try. Defaults to 60.
+        get: A function that makes the web request, such as ``requests.get``.
+            Pass your own to add retries, logging or custom headers. It is
+            called as ``get(url, timeout=seconds)``. Defaults to
+            ``requests.get`` with the headers this package has always sent.
 
     Returns:
         GeoJSON with point geometry, as a dictionary.
@@ -62,12 +83,16 @@ def get_all_fires(verbose: bool = False, timeout: float = DEFAULT_TIMEOUT) -> di
         >>> import calfire_wildfires
         >>> data = calfire_wildfires.get_all_fires()
         >>> data = calfire_wildfires.get_all_fires(timeout=10)
+        >>> data = calfire_wildfires.get_all_fires(get=my_get)
     """
-    return download_json(BASE_URL, verbose=verbose, timeout=timeout)
+    return download_json(BASE_URL, verbose=verbose, timeout=timeout, get=get)
 
 
 def get_active_incidents(
-    verbose: bool = False, timeout: float = DEFAULT_TIMEOUT
+    verbose: bool = False,
+    timeout: float = DEFAULT_TIMEOUT,
+    *,
+    get: Fetcher | None = None,
 ) -> list[Incident]:
     """Get the latest active incidents from CAL FIRE as typed records.
 
@@ -77,6 +102,10 @@ def get_active_incidents(
     Args:
         verbose: Print each request to standard error. Defaults to False.
         timeout: Seconds to wait for CAL FIRE on each try. Defaults to 60.
+        get: A function that makes the web request, such as ``requests.get``.
+            Pass your own to add retries, logging or custom headers. It is
+            called as ``get(url, timeout=seconds)``. Defaults to
+            ``requests.get`` with the headers this package has always sent.
 
     Returns:
         A list of ``Incident`` records. It is empty when CAL FIRE lists no
@@ -92,12 +121,15 @@ def get_active_incidents(
         >>> for incident in calfire_wildfires.get_active_incidents():
         ...     print(incident.name, incident.acres_burned, incident.percent_contained)
     """
-    data = get_active_fires(verbose=verbose, timeout=timeout)
+    data = get_active_fires(verbose=verbose, timeout=timeout, get=get)
     return [Incident.from_feature(f) for f in data["features"]]
 
 
 def get_all_incidents(
-    verbose: bool = False, timeout: float = DEFAULT_TIMEOUT
+    verbose: bool = False,
+    timeout: float = DEFAULT_TIMEOUT,
+    *,
+    get: Fetcher | None = None,
 ) -> list[Incident]:
     """Get all active and inactive incidents year to date as typed records.
 
@@ -107,6 +139,10 @@ def get_all_incidents(
     Args:
         verbose: Print each request to standard error. Defaults to False.
         timeout: Seconds to wait for CAL FIRE on each try. Defaults to 60.
+        get: A function that makes the web request, such as ``requests.get``.
+            Pass your own to add retries, logging or custom headers. It is
+            called as ``get(url, timeout=seconds)``. Defaults to
+            ``requests.get`` with the headers this package has always sent.
 
     Returns:
         A list of ``Incident`` records.
@@ -121,5 +157,5 @@ def get_all_incidents(
         >>> incidents = calfire_wildfires.get_all_incidents()
         >>> big = [i for i in incidents if (i.acres_burned or 0) > 10_000]
     """
-    data = get_all_fires(verbose=verbose, timeout=timeout)
+    data = get_all_fires(verbose=verbose, timeout=timeout, get=get)
     return [Incident.from_feature(f) for f in data["features"]]

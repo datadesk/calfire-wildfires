@@ -118,11 +118,9 @@ def test_other_request_errors_are_wrapped(script):
 def test_not_json_raises_data_error(script):
     """A page that is not JSON raises CalFireDataError."""
 
-    class NotJson(FakeResponse):
-        def json(self):
-            raise requests.JSONDecodeError("nope", "", 0)
-
-    script.replies = [NotJson()]
+    reply = FakeResponse()
+    reply.content = b"<html>Maintenance</html>"
+    script.replies = [reply]
     with pytest.raises(CalFireDataError, match="not JSON"):
         calfire_wildfires.get_all_fires()
 
