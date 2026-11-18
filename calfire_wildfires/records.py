@@ -6,6 +6,8 @@ from dataclasses import dataclass
 from datetime import UTC, datetime
 from typing import Any
 
+from .errors import CalFireDataError
+
 
 @dataclass(frozen=True, slots=True)
 class Incident:
@@ -121,7 +123,8 @@ class Incident:
             The incident, with numbers and times parsed. Times are in UTC.
 
         Raises:
-            ValueError: If a field is missing or a value cannot be read.
+            CalFireDataError: If a field is missing or a value cannot be read.
+                This is also a ``ValueError``.
 
         Examples:
             >>> try:
@@ -158,9 +161,13 @@ class Incident:
                 notification_desired=_flag(props.get("NotificationDesired", False)),
             )
         except KeyError as error:
-            raise ValueError(f"CAL FIRE's incident has no {error} field") from error
+            raise CalFireDataError(
+                f"CAL FIRE's incident has no {error} field"
+            ) from error
         except (TypeError, ValueError) as error:
-            raise ValueError(f"Could not read CAL FIRE's incident: {error}") from error
+            raise CalFireDataError(
+                f"Could not read CAL FIRE's incident: {error}"
+            ) from error
 
 
 def _text(value: Any) -> str:

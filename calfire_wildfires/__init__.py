@@ -1,12 +1,14 @@
-"""
-Download wildfires data from CalFire
-"""
+"""Download wildfires data from CalFire"""
 
-import requests
+from __future__ import annotations
 
+from .errors import CalFireDataError, CalFireError
+from .fetch import BASE_URL, DEFAULT_TIMEOUT, download_json
 from .records import Incident
 
 __all__ = [
+    "CalFireDataError",
+    "CalFireError",
     "Incident",
     "get_active_fires",
     "get_active_incidents",
@@ -14,93 +16,110 @@ __all__ = [
     "get_all_incidents",
 ]
 
+ACTIVE_URL = f"{BASE_URL}?inactive=false"
 
-def get_active_fires():
-    """Get the latest ative fires from CalFire.
 
-    Returns GeoJSON with point geometry
+def get_active_fires(verbose: bool = False, timeout: float = DEFAULT_TIMEOUT) -> dict:
+    """Get the latest active fires from CAL FIRE.
+
+    Args:
+        verbose: Print each request to standard error. Defaults to False.
+        timeout: Seconds to wait for CAL FIRE on each try. Defaults to 60.
+
+    Returns:
+        GeoJSON with point geometry, as a dictionary. It has no features when
+        CAL FIRE lists no active incidents.
+
+    Raises:
+        CalFireError: If CAL FIRE cannot be reached after several tries, or
+            answers with an error. This is a plain ``Exception``, as before.
+        CalFireDataError: If CAL FIRE's answer is not a list of incidents.
+
+    Examples:
+        >>> import calfire_wildfires
+        >>> data = calfire_wildfires.get_active_fires()
+        >>> data = calfire_wildfires.get_active_fires(timeout=10)
     """
-    # Request data
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",  # noqa
-    }
-    url = "https://incidents.fire.ca.gov/umbraco/api/IncidentApi/GeoJsonList?inactive=false"
-    r = requests.get(url, headers=headers)
-
-    # Make sure get a good response
-    try:
-        assert r.ok
-    except AssertionError as err:
-        raise Exception(
-            f"Request for data failed with {r.status_code} status code"
-        ) from err
-
-    # Return it
-    return r.json()
+    return download_json(ACTIVE_URL, verbose=verbose, timeout=timeout)
 
 
-def get_all_fires():
-    """Get all active and inactive fires year to date from CalFire.
+def get_all_fires(verbose: bool = False, timeout: float = DEFAULT_TIMEOUT) -> dict:
+    """Get all active and inactive fires year to date from CAL FIRE.
 
-    Returns GeoJSON with point geometry
+    Args:
+        verbose: Print each request to standard error. Defaults to False.
+        timeout: Seconds to wait for CAL FIRE on each try. Defaults to 60.
+
+    Returns:
+        GeoJSON with point geometry, as a dictionary.
+
+    Raises:
+        CalFireError: If CAL FIRE cannot be reached after several tries, or
+            answers with an error. This is a plain ``Exception``, as before.
+        CalFireDataError: If CAL FIRE's answer is not a list of incidents.
+
+    Examples:
+        >>> import calfire_wildfires
+        >>> data = calfire_wildfires.get_all_fires()
+        >>> data = calfire_wildfires.get_all_fires(timeout=10)
     """
-    # Request data
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36",  # noqa
-    }
-    url = "https://incidents.fire.ca.gov/umbraco/api/IncidentApi/GeoJsonList"
-    r = requests.get(url, headers=headers)
-
-    # Make sure the response works
-    try:
-        assert r.ok
-    except AssertionError as err:
-        raise Exception(
-            f"Request for data failed with {r.status_code} status code"
-        ) from err
-
-    # Return it
-    return r.json()
+    return download_json(BASE_URL, verbose=verbose, timeout=timeout)
 
 
-def get_active_incidents() -> list[Incident]:
+def get_active_incidents(
+    verbose: bool = False, timeout: float = DEFAULT_TIMEOUT
+) -> list[Incident]:
     """Get the latest active incidents from CAL FIRE as typed records.
 
     This is the same list as ``get_active_fires``, with each feature turned
     into an ``Incident`` that has parsed numbers and UTC times.
+
+    Args:
+        verbose: Print each request to standard error. Defaults to False.
+        timeout: Seconds to wait for CAL FIRE on each try. Defaults to 60.
 
     Returns:
         A list of ``Incident`` records. It is empty when CAL FIRE lists no
         active incidents.
 
     Raises:
-        Exception: If CAL FIRE answers with an error status.
-        ValueError: If an incident in the list cannot be read.
+        CalFireError: If CAL FIRE cannot be reached after several tries, or
+            answers with an error.
+        CalFireDataError: If the answer, or an incident in it, cannot be read.
 
     Examples:
         >>> import calfire_wildfires
         >>> for incident in calfire_wildfires.get_active_incidents():
         ...     print(incident.name, incident.acres_burned, incident.percent_contained)
     """
-    return [Incident.from_feature(f) for f in get_active_fires()["features"]]
+    data = get_active_fires(verbose=verbose, timeout=timeout)
+    return [Incident.from_feature(f) for f in data["features"]]
 
 
-def get_all_incidents() -> list[Incident]:
+def get_all_incidents(
+    verbose: bool = False, timeout: float = DEFAULT_TIMEOUT
+) -> list[Incident]:
     """Get all active and inactive incidents year to date as typed records.
 
     This is the same list as ``get_all_fires``, with each feature turned into
     an ``Incident`` that has parsed numbers and UTC times.
 
+    Args:
+        verbose: Print each request to standard error. Defaults to False.
+        timeout: Seconds to wait for CAL FIRE on each try. Defaults to 60.
+
     Returns:
         A list of ``Incident`` records.
 
     Raises:
-        Exception: If CAL FIRE answers with an error status.
-        ValueError: If an incident in the list cannot be read.
+        CalFireError: If CAL FIRE cannot be reached after several tries, or
+            answers with an error.
+        CalFireDataError: If the answer, or an incident in it, cannot be read.
 
     Examples:
         >>> import calfire_wildfires
         >>> incidents = calfire_wildfires.get_all_incidents()
         >>> big = [i for i in incidents if (i.acres_burned or 0) > 10_000]
     """
-    return [Incident.from_feature(f) for f in get_all_fires()["features"]]
+    data = get_all_fires(verbose=verbose, timeout=timeout)
+    return [Incident.from_feature(f) for f in data["features"]]
