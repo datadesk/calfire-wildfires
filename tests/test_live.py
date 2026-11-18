@@ -22,3 +22,9 @@ def test_live_active_fires():
     """The active list downloads. It can be empty when nothing is burning."""
     data = calfire_wildfires.get_active_fires()
     assert data["type"] == "FeatureCollection"
+
+
+def test_live_incidents():
+    """Every incident CAL FIRE lists right now can be read as a typed record."""
+    for incident in calfire_wildfires.get_all_incidents():
+        assert incident.started_at.tzinfo is not None
