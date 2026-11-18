@@ -1,0 +1,110 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.506241,
+     40.506958
+    ]
+   },
+   "properties": {
+    "Name": "Lamb Fire",
+    "Final": false,
+    "Updated": "2026-08-06T17:54:06Z",
+    "Started": "2026-01-24T22:17:06Z",
+    "AdminUnit": "U.S. Forest Service Six Rivers National Forest",
+    "AdminUnitUrl": null,
+    "County": "Trinity",
+    "Location": "Hastings Tie Road, three miles north of Mad River",
+    "AcresBurned": 10.0,
+    "PercentContained": 100.0,
+    "ControlStatement": "",
+    "AgencyNames": "",
+    "Longitude": -123.506241,
+    "Latitude": 40.506958,
+    "Type": "Wildfire",
+    "UniqueId": "8f9a3173-0ea3-46c2-a4f9-8b254990c187",
+    "Url": "https://www.fire.ca.gov/incidents/2026/1/24/lamb-fire/",
+    "ExtinguishedDate": "",
+    "ExtinguishedDateOnly": "",
+    "StartedDateOnly": "2026-01-24",
+    "IsActive": true,
+    "CalFireIncident": true,
+    "NotificationDesired": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -118.0007,
+     33.7869022
+    ]
+   },
+   "properties": {
+    "Name": "Garden Grove HAZMAT",
+    "Final": false,
+    "Updated": "2026-05-31T05:02:59Z",
+    "Started": "2026-05-22T01:41:00Z",
+    "AdminUnit": "Orange County Fire Authority",
+    "AdminUnitUrl": null,
+    "County": "Orange",
+    "Location": "12100 Western Avenue, Garden Grove",
+    "AcresBurned": null,
+    "PercentContained": null,
+    "ControlStatement": null,
+    "AgencyNames": "",
+    "Longitude": -118.0007,
+    "Latitude": 33.7869022,
+    "Type": "Hazmat",
+    "UniqueId": "4e779b08-433e-4492-9975-b76ff878b1c4",
+    "Url": "https://www.fire.ca.gov/incidents/2026/5/21/garden-grove-hazmat/",
+    "ExtinguishedDate": "",
+    "ExtinguishedDateOnly": "",
+    "StartedDateOnly": "2026-05-22",
+    "IsActive": true,
+    "CalFireIncident": false,
+    "NotificationDesired": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -118.3501,
+     34.7802
+    ]
+   },
+   "properties": {
+    "Name": "Macy Fire",
+    "Final": false,
+    "Updated": "2026-06-08T15:44:13Z",
+    "Started": "2026-06-05T22:43:22Z",
+    "AdminUnit": "Unified Command: Los Angeles County Fire Department, Kern County Fire Department",
+    "AdminUnitUrl": null,
+    "County": "Kern, Los Angeles",
+    "Location": "Highway 138 & 120th Street W, Lancaster",
+    "AcresBurned": 1194.1,
+    "PercentContained": 100.0,
+    "ControlStatement": null,
+    "AgencyNames": "",
+    "Longitude": -118.3501,
+    "Latitude": 34.7802,
+    "Type": "Wildfire",
+    "UniqueId": "4c34a4e6-463c-4599-8205-41c255d5c842",
+    "Url": "https://www.fire.ca.gov/incidents/2026/6/5/macy-fire/",
+    "ExtinguishedDate": "",
+    "ExtinguishedDateOnly": "",
+    "StartedDateOnly": "2026-06-05",
+    "IsActive": true,
+    "CalFireIncident": false,
+    "NotificationDesired": false
+   }
+  }
+ ]
+}
