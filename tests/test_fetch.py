@@ -189,3 +189,44 @@ def test_cli_error_is_one_line(script):
     assert result.exit_code == 1
     assert result.output.startswith("Error:")
     assert "Traceback" not in result.output
+
+
+def test_tries_at_least_once(script, good):
+    """Asking for zero tries still makes one request."""
+    script.replies = [good]
+    fetch.download_json(fetch.BASE_URL, tries=0)
+    assert len(script.urls) == 1
+
+
+def test_waits_longer_between_tries(script, good, monkeypatch):
+    """The pause before each new try grows."""
+    pauses = []
+    monkeypatch.setattr(fetch.time, "sleep", pauses.append)
+    script.replies = [FakeResponse(status_code=500)] * 2 + [good]
+    calfire_wildfires.get_all_fires()
+    assert len(pauses) == 2
+    assert 2 <= pauses[0] < 3
+    assert 4 <= pauses[1] < 5
+
+
+def test_timeout_message_names_the_address(script):
+    """A final network failure says where it was trying to reach."""
+    script.replies = [requests.Timeout("too slow")] * 4
+    with pytest.raises(CalFireError, match="Could not reach CAL FIRE") as caught:
+        calfire_wildfires.get_active_fires()
+    assert caught.value.url == fetch.BASE_URL + "?inactive=false"
+    assert caught.value.status_code is None
+
+
+def test_cli_active_fires_error(script):
+    """The active command also turns a failure into one clean line."""
+    script.replies = [FakeResponse(status_code=403)]
+    result = CliRunner().invoke(cmd, ["active-fires"])
+    assert result.exit_code == 1
+    assert "403" in result.output
+
+
+def test_cli_rejects_a_tiny_timeout(fake_calfire):
+    """A timeout under one second is refused."""
+    result = CliRunner().invoke(cmd, ["all-fires", "--timeout", "0"])
+    assert result.exit_code == 2
