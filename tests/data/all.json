@@ -1,0 +1,215 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -123.506241,
+     40.506958
+    ]
+   },
+   "properties": {
+    "Name": "Lamb Fire",
+    "Final": true,
+    "Updated": "2026-08-06T17:54:06Z",
+    "Started": "2026-01-24T22:17:06Z",
+    "AdminUnit": "U.S. Forest Service Six Rivers National Forest",
+    "AdminUnitUrl": null,
+    "County": "Trinity",
+    "Location": "Hastings Tie Road, three miles north of Mad River",
+    "AcresBurned": 10.0,
+    "PercentContained": 100.0,
+    "ControlStatement": "",
+    "AgencyNames": "",
+    "Longitude": -123.506241,
+    "Latitude": 40.506958,
+    "Type": "Wildfire",
+    "UniqueId": "8f9a3173-0ea3-46c2-a4f9-8b254990c187",
+    "Url": "https://www.fire.ca.gov/incidents/2026/1/24/lamb-fire/",
+    "ExtinguishedDate": "",
+    "ExtinguishedDateOnly": "",
+    "StartedDateOnly": "2026-01-24",
+    "IsActive": false,
+    "CalFireIncident": true,
+    "NotificationDesired": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -118.0007,
+     33.7869022
+    ]
+   },
+   "properties": {
+    "Name": "Garden Grove HAZMAT",
+    "Final": true,
+    "Updated": "2026-05-31T05:02:59Z",
+    "Started": "2026-05-22T01:41:00Z",
+    "AdminUnit": "Orange County Fire Authority",
+    "AdminUnitUrl": null,
+    "County": "Orange",
+    "Location": "12100 Western Avenue, Garden Grove",
+    "AcresBurned": null,
+    "PercentContained": null,
+    "ControlStatement": null,
+    "AgencyNames": "",
+    "Longitude": -118.0007,
+    "Latitude": 33.7869022,
+    "Type": "Hazmat",
+    "UniqueId": "4e779b08-433e-4492-9975-b76ff878b1c4",
+    "Url": "https://www.fire.ca.gov/incidents/2026/5/21/garden-grove-hazmat/",
+    "ExtinguishedDate": "",
+    "ExtinguishedDateOnly": "",
+    "StartedDateOnly": "2026-05-22",
+    "IsActive": false,
+    "CalFireIncident": false,
+    "NotificationDesired": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -121.78292,
+     36.80678
+    ]
+   },
+   "properties": {
+    "Name": "Moss Landing Power Plant Fire",
+    "Final": true,
+    "Updated": "2026-09-19T20:21:22Z",
+    "Started": "2026-09-18T16:24:14Z",
+    "AdminUnit": "",
+    "AdminUnitUrl": null,
+    "County": "Monterey",
+    "Location": "Cabrillo Highway and Dolan Road, Moss Landing",
+    "AcresBurned": 0.1,
+    "PercentContained": null,
+    "ControlStatement": null,
+    "AgencyNames": "",
+    "Longitude": -121.78292,
+    "Latitude": 36.80678,
+    "Type": "Fire",
+    "UniqueId": "8ca7e8ef-f3a5-4569-92a4-b23342b8c51a",
+    "Url": "https://www.fire.ca.gov/incidents/2026/9/18/moss-landing-power-plant-fire/",
+    "ExtinguishedDate": "2026-09-19T17:00:00Z",
+    "ExtinguishedDateOnly": "2026-09-19",
+    "StartedDateOnly": "2026-09-18",
+    "IsActive": false,
+    "CalFireIncident": true,
+    "NotificationDesired": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -118.3501,
+     34.7802
+    ]
+   },
+   "properties": {
+    "Name": "Macy Fire",
+    "Final": true,
+    "Updated": "2026-06-08T15:44:13Z",
+    "Started": "2026-06-05T22:43:22Z",
+    "AdminUnit": "Unified Command: Los Angeles County Fire Department, Kern County Fire Department",
+    "AdminUnitUrl": null,
+    "County": "Kern, Los Angeles",
+    "Location": "Highway 138 & 120th Street W, Lancaster",
+    "AcresBurned": 1194.1,
+    "PercentContained": 100.0,
+    "ControlStatement": null,
+    "AgencyNames": "",
+    "Longitude": -118.3501,
+    "Latitude": 34.7802,
+    "Type": "Wildfire",
+    "UniqueId": "4c34a4e6-463c-4599-8205-41c255d5c842",
+    "Url": "https://www.fire.ca.gov/incidents/2026/6/5/macy-fire/",
+    "ExtinguishedDate": "",
+    "ExtinguishedDateOnly": "",
+    "StartedDateOnly": "2026-06-05",
+    "IsActive": false,
+    "CalFireIncident": false,
+    "NotificationDesired": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -117.695965,
+     34.45128
+    ]
+   },
+   "properties": {
+    "Name": "Summit Fire",
+    "Final": true,
+    "Updated": "2026-07-18T04:49:18Z",
+    "Started": "2026-07-10T20:29:58Z",
+    "AdminUnit": "USFS Angeles National Forest",
+    "AdminUnitUrl": null,
+    "County": "Los Angeles",
+    "Location": "Jesus Canyon Road East and Avenue Z, Llano",
+    "AcresBurned": 2690.0,
+    "PercentContained": 100.0,
+    "ControlStatement": "Crews have made significant progress on the Summit Fire and forward progress has been stopped.  Hot and dry conditions combined with gusty winds persist across the fire area.  The northern portion of the fire is difficult to access due to limited roads, and firefighters are dealing with difficult terrain in the southern portion of the fire. There is still potential for significant fire behavior and rapid growth. Firefighters continue to construct fire line and in some areas are mopping up hot spots.",
+    "AgencyNames": "",
+    "Longitude": -117.695965,
+    "Latitude": 34.45128,
+    "Type": "Wildfire",
+    "UniqueId": "b59146d6-229f-47d3-979e-11d73e062989",
+    "Url": "https://www.fire.ca.gov/incidents/2026/7/10/summit-fire/",
+    "ExtinguishedDate": "2026-07-17T14:03:58Z",
+    "ExtinguishedDateOnly": "2026-07-17",
+    "StartedDateOnly": "2026-07-10",
+    "IsActive": false,
+    "CalFireIncident": true,
+    "NotificationDesired": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -117.094579,
+     33.914308
+    ]
+   },
+   "properties": {
+    "Name": "Springs Fire",
+    "Final": true,
+    "Updated": "2026-04-18T01:07:32Z",
+    "Started": "2026-04-03T18:01:30Z",
+    "AdminUnit": "CAL FIRE Riverside Unit",
+    "AdminUnitUrl": null,
+    "County": "Riverside",
+    "Location": "Gilman Springs Road, East of Moreno Valley",
+    "AcresBurned": 4176.0,
+    "PercentContained": 100.0,
+    "ControlStatement": null,
+    "AgencyNames": "Hemet City Fire Department; Riverside City Fire Department; Pechanga Fire Department; Morongo Fire Department; Palm Springs Fire Department; Idyllwild Fire Department; Corona Fire Department",
+    "Longitude": -117.094579,
+    "Latitude": 33.914308,
+    "Type": "Wildfire",
+    "UniqueId": "8767de7a-c662-4dd0-965e-7fb6be9793f4",
+    "Url": "https://www.fire.ca.gov/incidents/2026/4/3/springs-fire/",
+    "ExtinguishedDate": "2026-04-08T15:48:00Z",
+    "ExtinguishedDateOnly": "2026-04-08",
+    "StartedDateOnly": "2026-04-03",
+    "IsActive": false,
+    "CalFireIncident": true,
+    "NotificationDesired": false
+   }
+  }
+ ]
+}
