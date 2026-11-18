@@ -19,12 +19,9 @@ class FakeResponse:
 
     def __init__(self, payload=None, status_code: int = 200) -> None:
         self.payload = payload
+        self.content = json.dumps(payload).encode()
         self.status_code = status_code
         self.ok = status_code < 400
-
-    def json(self):
-        """Return the saved payload, like ``requests`` does."""
-        return self.payload
 
 
 @pytest.fixture(autouse=True)
